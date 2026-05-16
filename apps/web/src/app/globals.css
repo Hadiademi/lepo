@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* =====================================================================
+ * Lepo design tokens — Tailwind v4 theme.
+ * Sourced from the prototype in /barber-slovenia (tokens.jsx, screens-*.jsx).
+ * Do not change without design approval.
+ * ===================================================================== */
+
+@theme {
+  /* Surface — dark (default) */
+  --color-bg: #0a0f0c;
+  --color-bg-elev: #131a16;
+  --color-surface: #18211d;
+  --color-surface-hi: #1e2823;
+  --color-border: rgba(194, 143, 92, 0.14);
+  --color-border-strong: rgba(194, 143, 92, 0.32);
+
+  /* Surface — light */
+  --color-bg-light: #e5e2d2;
+  --color-bg-elev-light: #f6f3e8;
+  --color-surface-light: #ece6d6;
+  --color-surface-hi-light: #f1ecdb;
+
+  /* Text */
+  --color-text: #ece6d6;
+  --color-text-dim: rgba(236, 230, 214, 0.62);
+  --color-text-faint: rgba(236, 230, 214, 0.38);
+  --color-text-on-light: #1a2420;
+  --color-text-on-light-dim: rgba(26, 36, 32, 0.62);
+
+  /* Accents */
+  --color-gold: #c28f5c;
+  --color-gold-soft: rgba(194, 143, 92, 0.18);
+  --color-gold-hi: #d2a472;
+  --color-gold-lo: #8e6238;
+  --color-sage: #7a9885;
+  --color-sage-soft: rgba(122, 152, 133, 0.16);
+
+  /* Semantic */
+  --color-success: #7a9885;
+  --color-warning: #d4a560;
+  --color-error: #c45f4f;
+  --color-info: #6b8aa5;
+
+  /* Premium gradients */
+  --gradient-gold: linear-gradient(168deg, #d2a472 0%, #c28f5c 48%, #8e6238 100%);
+  --gradient-bg-splash: radial-gradient(ellipse at top, #1f2a25 0%, #131a16 55%, #08100d 100%);
+
+  /* Typography — wired up from next/font in layout.tsx */
+  --font-display: var(--font-fraunces), "Times New Roman", Georgia, serif;
+  --font-body: var(--font-inter), -apple-system, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-page: 280ms;
+  --duration-tap: 200ms;
+
+  /* Radii (match prototype) */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  /* Shadows */
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  --shadow-card-dark: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  --shadow-gold: 0 24px 60px -16px rgba(194, 143, 92, 0.55),
+    0 1px 0 rgba(255, 230, 196, 0.45) inset, 0 -2px 0 rgba(26, 18, 9, 0.22) inset,
+    0 0 0 1px rgba(194, 143, 92, 0.22);
+}
+
+/* Light theme override */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Default theme is dark (matches the prototype default) */
+:root {
+  color-scheme: dark;
+}
+
+/* Reset / base */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hide scrollbars in mobile-frame style */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+/* Accessibility — visible focus ring on keyboard nav only */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Splash pulse */
+@keyframes lepo-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Page slide transitions (used by Framer Motion variants too) */
+@keyframes lepo-slide-in-r {
+  from {
+    transform: translateX(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes lepo-slide-out-r {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0.6;
+  }
+}
+@keyframes lepo-slide-in-l {
+  from {
+    transform: translateX(-30%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

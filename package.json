@@ -1,0 +1,33 @@
+{
+  "name": "lepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Lepo — Atelier Slovenija. A premium beauty booking marketplace for Slovenia.",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "pnpm --filter @lepo/web dev",
+    "build": "pnpm --filter @lepo/web build",
+    "start": "pnpm --filter @lepo/web start",
+    "lint": "pnpm -r --parallel lint",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "test": "pnpm -r --parallel test",
+    "test:e2e": "pnpm --filter @lepo/web test:e2e",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json,yaml,yml}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json,yaml,yml}\" --ignore-path .gitignore",
+    "clean": "pnpm -r exec rm -rf .next dist coverage playwright-report node_modules/.cache"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
+}
