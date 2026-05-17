@@ -7,40 +7,46 @@
  * ===================================================================== */
 
 @theme {
-  /* Surface — dark (default) */
-  --color-bg: #0a0f0c;
-  --color-bg-elev: #131a16;
-  --color-surface: #18211d;
-  --color-surface-hi: #1e2823;
-  --color-border: rgba(194, 143, 92, 0.14);
-  --color-border-strong: rgba(194, 143, 92, 0.32);
+  /* Surface — dark (default). Forest noir, deep pine elevation.
+     Values mirror /barber-slovenia/tokens.jsx::TOKENS.dark. */
+  --color-bg: #0e1411;
+  --color-bg-elev: #18211d;
+  --color-bg-elev-2: #1f2a25;
+  --color-surface: rgba(236, 230, 214, 0.035);
+  --color-surface-hi: rgba(236, 230, 214, 0.06);
+  --color-surface-max: rgba(236, 230, 214, 0.1);
+  --color-border: rgba(236, 230, 214, 0.08);
+  --color-border-strong: rgba(194, 143, 92, 0.26);
 
-  /* Surface — light */
-  --color-bg-light: #e5e2d2;
+  /* Surface — light. Raw linen, warm paper. */
+  --color-bg-light: #ecebe0;
   --color-bg-elev-light: #f6f3e8;
-  --color-surface-light: #ece6d6;
-  --color-surface-hi-light: #f1ecdb;
+  --color-bg-elev-2-light: #faf8ee;
+  --color-surface-light: #f6f3e8;
+  --color-surface-hi-light: #e2decf;
 
   /* Text */
   --color-text: #ece6d6;
-  --color-text-dim: rgba(236, 230, 214, 0.62);
-  --color-text-faint: rgba(236, 230, 214, 0.38);
+  --color-text-dim: rgba(236, 230, 214, 0.66);
+  --color-text-faint: rgba(236, 230, 214, 0.4);
   --color-text-on-light: #1a2420;
-  --color-text-on-light-dim: rgba(26, 36, 32, 0.62);
+  --color-text-on-light-dim: rgba(26, 36, 32, 0.66);
 
-  /* Accents */
+  /* Accents — brushed copper (dark) / cinnamon (light) */
   --color-gold: #c28f5c;
-  --color-gold-soft: rgba(194, 143, 92, 0.18);
-  --color-gold-hi: #d2a472;
-  --color-gold-lo: #8e6238;
+  --color-gold-soft: rgba(194, 143, 92, 0.14);
+  --color-gold-hi: #d8ac7e;
+  --color-gold-lo: #7d5530;
+  --color-gold-light: #8a5d33;
   --color-sage: #7a9885;
+  --color-sage-deep: #42584c;
   --color-sage-soft: rgba(122, 152, 133, 0.16);
 
   /* Semantic */
-  --color-success: #7a9885;
+  --color-success: #8fb39c;
   --color-warning: #d4a560;
-  --color-error: #c45f4f;
-  --color-info: #6b8aa5;
+  --color-error: #d08471;
+  --color-info: #8da5a0;
 
   /* Premium gradients */
   --gradient-gold: linear-gradient(168deg, #d2a472 0%, #c28f5c 48%, #8e6238 100%);
