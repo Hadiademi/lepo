@@ -18,6 +18,128 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_services: {
+        Row: {
+          booking_id: string
+          duration_min: number
+          name_at_booking: string
+          price_cents: number
+          service_id: string
+          vat_rate: number
+        }
+        Insert: {
+          booking_id: string
+          duration_min: number
+          name_at_booking: string
+          price_cents: number
+          service_id: string
+          vat_rate: number
+        }
+        Update: {
+          booking_id?: string
+          duration_min?: number
+          name_at_booking?: string
+          price_cents?: number
+          service_id?: string
+          vat_rate?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_services_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "booking_services_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bookings: {
+        Row: {
+          business_id: string
+          cancel_reason: string | null
+          cancelled_at: string | null
+          cancelled_by: string | null
+          client_notes: string | null
+          client_user_id: string
+          created_at: string
+          deposit_cents: number
+          id: string
+          staff_user_id: string
+          status: string
+          stripe_pi_id: string | null
+          time_range: unknown
+          total_cents: number
+        }
+        Insert: {
+          business_id: string
+          cancel_reason?: string | null
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          client_notes?: string | null
+          client_user_id: string
+          created_at?: string
+          deposit_cents?: number
+          id?: string
+          staff_user_id: string
+          status?: string
+          stripe_pi_id?: string | null
+          time_range: unknown
+          total_cents: number
+        }
+        Update: {
+          business_id?: string
+          cancel_reason?: string | null
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          client_notes?: string | null
+          client_user_id?: string
+          created_at?: string
+          deposit_cents?: number
+          id?: string
+          staff_user_id?: string
+          status?: string
+          stripe_pi_id?: string | null
+          time_range?: unknown
+          total_cents?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_cancelled_by_fkey"
+            columns: ["cancelled_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_client_user_id_fkey"
+            columns: ["client_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_staff_user_id_fkey"
+            columns: ["staff_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       business_members: {
         Row: {
           avatar_url: string | null
@@ -204,6 +326,53 @@ export type Database = {
           },
         ]
       }
+      notifications: {
+        Row: {
+          attempts: number
+          channel: string
+          created_at: string
+          id: string
+          last_error: string | null
+          payload: Json
+          send_after: string
+          sent_at: string | null
+          template: string
+          user_id: string | null
+        }
+        Insert: {
+          attempts?: number
+          channel: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          payload: Json
+          send_after?: string
+          sent_at?: string | null
+          template: string
+          user_id?: string | null
+        }
+        Update: {
+          attempts?: number
+          channel?: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          payload?: Json
+          send_after?: string
+          sent_at?: string | null
+          template?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -237,6 +406,7 @@ export type Database = {
       reviews: {
         Row: {
           body: string | null
+          booking_id: string | null
           business_id: string
           client_user_id: string | null
           created_at: string
@@ -247,6 +417,7 @@ export type Database = {
         }
         Insert: {
           body?: string | null
+          booking_id?: string | null
           business_id: string
           client_user_id?: string | null
           created_at?: string
@@ -257,6 +428,7 @@ export type Database = {
         }
         Update: {
           body?: string | null
+          booking_id?: string | null
           business_id?: string
           client_user_id?: string | null
           created_at?: string
@@ -266,6 +438,13 @@ export type Database = {
           reviewer_name?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "reviews_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "reviews_business_id_fkey"
             columns: ["business_id"]
